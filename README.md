@@ -1,4 +1,5 @@
 #Copyright (C) 2020 Sufyan M. Shaikh
+
 #GNU AGPL v3.0
 
 These scripts are used to do strucutrual relaxations and get precise
