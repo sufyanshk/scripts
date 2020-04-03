@@ -1,3 +1,4 @@
+#Copyright (C) 2020 Sufyan M. Shaikh
 #!/bin/bash
 
 #THIS FILE SHOULD ONLY BE USED FOR OPTIMISING KPOINTS...

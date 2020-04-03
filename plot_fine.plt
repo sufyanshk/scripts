@@ -1,3 +1,4 @@
+#Copyright (C) 2020 Sufyan M. Shaikh
 #For plotting FINE E vs. V graph using gnuplot
 set encoding utf8
 set terminal postscript eps enhanced 

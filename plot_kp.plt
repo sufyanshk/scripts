@@ -1,3 +1,4 @@
+#Copyright (C) 2020 Sufyan M. Shaikh
 #Plots E vs. K-points for precise lattice parameter using gnuplot
 set encoding utf8 
 set terminal postscript eps enhanced

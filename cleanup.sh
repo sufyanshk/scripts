@@ -1,3 +1,6 @@
+#Deletes the files created after running VASP calculations.
+#Copyright (C) 2020 Sufyan M. Shaikh
+
 rm -f CHG* CONTCAR* DOSCAR* DYNMAT EIGENVAL IBZKPT OPTIC OSZICAR* OUTCAR* PROCAR* \
       PCDAT W* XDATCAR* PARCHG* vasprun.xml SUMMARY.* REPORT \
       wannier90.win wannier90_band.gnu wannier90_band.kpt wannier90.chk wannier90.wout \
