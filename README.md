@@ -1,4 +1,5 @@
 #Copyright (C) 2020 Sufyan M. Shaikh
+#GNU AGPL v3.0
 These scripts are used to do strucutrual relaxations and get precise
 lattice parameter using Vienna Ab-inito Simulaiton Package (VASP) using bash scripts.
 (VASP should be installed prior to running these commands)
