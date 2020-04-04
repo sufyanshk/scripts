@@ -1,5 +1,5 @@
 # VASP structure relaxation files.
-*VASP and Gnuplot should be installed prior to running these scripts
+*VASP and Gnuplot should be installed prior to running these scripts\
 MPIRUN is used for parrallel runs of vasp_std*
 
 These scripts are used to do strucutrual relaxations and get precise
