@@ -24,13 +24,7 @@ sed -i "2s/.*/$i/" POSCAR
 #Put the range of K-point in which you want to get the energy values.
 for kp in $(seq 4 1 20)
 do
-	cat > KPOINTS<<!
-	K-Points
-	 0
-	Monkhorst Pack
-	$kp $kp $kp
-	0 0 0
-!
+	sed -i "4s/.*/$kp $kp $kp/" KPOINTS
 
 	echo "a= $i K-points=$kp $kp $kp"
 	
