@@ -45,3 +45,4 @@ awk '{print $1","$2","$5}' summary2.csv > summary_EvsV_fine.csv
 gnuplot plot_fine.plt
 
 echo "$sys_name : E vs. V \"FINE\" CALCULATION FINISHED"
+printf "\n"

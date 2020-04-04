@@ -94,3 +94,4 @@ awk '{print $1","$2","$5}' summary1.csv > summary_EvsV_coarse.csv
 gnuplot plot_coarse.plt
 
 echo "$sys_name : E vs. V \"COARSE\" CALCULATIONS ARE FINISHED"
+printf "\n"

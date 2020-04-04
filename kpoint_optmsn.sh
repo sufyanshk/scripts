@@ -43,3 +43,4 @@ awk '{print $1","$2","$5}' summary3.csv >> summary_with_kp.csv
 gnuplot plot_kp.plt
 
 echo "$sys_name : K-point optimisation finished"
+printf "\n"
