@@ -61,29 +61,9 @@ echo "SECOND RUN OF VASP IS OVER"
 #For getting correct energy values, one more calculation will be done with TETRAHEDRON method (ISMEAR=-5).
 #There won't be any relaxation for this run (IBRION=-1).
 #INCAR file will be written here
-echo "NEW INCAR FILE IS WRITTEN"
-cat >INCAR <<!
-	SYSTEM = $sys_name
-	ISTART = 0
-	NPAR = 4
-	ALGO = FAST
-	ISPIN = 2 
-	NSW = 1
-	NSIM = 4
-	ENCUT = $e_cutoff
-	IBRION = -1
-	NELM = 100
-	NELMIN = 3 
-	ISIF = 0 
-	ISMEAR = -5
-	MAGMOM = 5 5 
-	SIGMA = 0.2
-	PREC = Accurate
-	LWAVE = .FALSE.
-	LREAL = AUTO
-	LCHARG = .FALSE.
-	LVTOT = .FALSE.
-!
+echo "INCAR FILE WILL BE EDITED"
+sed -i "s/ISMEAR.*/ISMEAR = -5" INCAR
+sed -i "s/IBRION.*/IBRION = -1" INCAR
 
 echo "STARTING FINAL ENERGY CALCULATION FOR CORRECT ENERGY VALUES"
 mpirun \-n $n_cores vasp_std > log

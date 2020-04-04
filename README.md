@@ -7,4 +7,4 @@ lattice parameter using Vienna Ab-initio Simulaiton Package (VASP) using bash an
 The .plt files are used for plotting "E vs. k-points" and "E vs. lattice parameter"
 plots.
 
-POSCAR and KPOINTS files are updated during runtime of the respective scripts. Kindly edit the *evsvol_coarse.sh*, *evsvol_fine.sh* and *kp_optimisation.sh* files before runnign the scripts.
+POSCAR and KPOINTS files are updated during runtime of the respective scripts. Kindly edit the *evsvol_coarse.sh*, *evsvol_fine.sh* and *kp_optimisation.sh* files before running the scripts.
