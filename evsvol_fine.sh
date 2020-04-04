@@ -28,18 +28,8 @@ e_cutoff=295
 #For better accuracy, keep the step size in for loop as 0.01
 for i in $(seq 2 0.01 4) 
 do
-	cat >POSCAR <<!
-	$sys_name
-	$i
-	1 0 0
-	0 1 0
-	0 0 1
-	V
-	2
-	Direct
-	0 0 0
-	0.5 0.5 0.5 
-!
+	sed -i "1s/.*/$sys_name/" POSCAR
+	sed -i "2s/.*/$i/" POSCAR
 	echo "a= $i"
 	mpirun \-n $n_cores vasp_std > log 
 	

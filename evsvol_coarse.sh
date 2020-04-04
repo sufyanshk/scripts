@@ -96,18 +96,8 @@ echo "STARTING E vs V CALCULATIONS"
 
 for i in $(seq 1 1 10) 
 do
-	cat >POSCAR <<!
-	$sys_name
-	$i
-	1 0 0
-	0 1 0 
-	0 0 1
-	V
-	2
-	Direct
-	0 0 0
-	0.5 0.5 0.5
-!
+	sed -i "1s/.*/$sys_name/" POSCAR
+	sed -i "2s/.*/$i/" POSCAR
 	echo "a= $i"
 	mpirun \-n $n_cores vasp_std > log 
 	

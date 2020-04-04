@@ -17,18 +17,8 @@ n_cores=8
 i=2.9
 
 #POSCAR with precise lattice parameter will be written here.
-cat >POSCAR <<!
-	$sys_name
-	$i
-	1 0 0
-	0 1 0
-	0 0 1
-	V
-	2
-	Direct
-	0 0 0
-	0.5 0.5 0.5
-!
+sed -i "1s/.*/$sys_name/" POSCAR
+sed -i "2s/.*/$i/" POSCAR
 
 #KPOINTS will be changed and the respective energies will be calculated.
 #Put the range of K-point in which you want to get the energy values.
