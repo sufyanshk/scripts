@@ -1,4 +1,4 @@
-# VASP structure relaxation files.
+# VASP structure relaxation.
 *VASP and Gnuplot should be installed prior to running these scripts\
 MPIRUN is used for parrallel runs of vasp_std*
 
