@@ -1,4 +1,4 @@
-# VASP structure relaxation.
+# VASP structure relaxation
 *VASP and Gnuplot should be installed prior to running these scripts\
 MPIRUN is used for parrallel runs of vasp_std*
 
@@ -23,3 +23,7 @@ Steps:
 8. Edit the *kpoint_optmsn.sh* file for desired K-point density.
 9. `nohup kpoint_optmsn.sh &` so that the calculations run in the background.
 10. Check the "nohup.out" file for the output messages. (If *summary3.eps* file is generated then it means your calculations are over)
+
+# Disclaimer
+This program is not affiliated with VASP.\
+You are free to modify it, but do so at your own risk.
