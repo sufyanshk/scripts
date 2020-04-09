@@ -1,13 +1,11 @@
 # VASP structure relaxation
-VASP and Gnuplot should be installed prior to running these scripts.\
+VASP and Gnuplot should be installed prior to running these scripts.  
 MPIRUN is used for parrallel runs of `vasp_std`.
 
-These scripts are used to do strucutrual relaxations and get precise
-lattice parameter using Vienna Ab-initio Simulaiton Package (VASP) using bash and gnuplot scripts.
+These scripts are used to do strucutrual relaxations and get precise lattice parameter using Vienna Ab-initio Simulaiton Package (VASP) using bash and gnuplot scripts.  
+POSCAR and KPOINTS files are updated during runtime of the respective scripts. Kindly edit the `evsvol_coarse.sh`, `evsvol_fine.sh` and `kp_optimisation.sh` files before running the scripts.  
 The `.plt` files are used for plotting `E vs. k-points` and `E vs. lattice parameter`
 plots.
-
-POSCAR and KPOINTS files are updated during runtime of the respective scripts. Kindly edit the `evsvol_coarse.sh`, `evsvol_fine.sh` and `kp_optimisation.sh` files before running the scripts.
 
 Steps:
 1. Put KPOINTS, POSCAR and POTCAR files.
@@ -25,5 +23,5 @@ Steps:
 10. Check the `nohup.out` file for the output messages. (If `summary3.eps` file is generated then it means your calculations are over)
 
 # Disclaimer
-This program is not affiliated with VASP.\
+This program is not affiliated with VASP.  
 You are free to modify it, but do so at your own risk.
