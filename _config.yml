@@ -2,4 +2,7 @@ theme: jekyll-theme-cayman
 google_analytics: UA-163057908-1
 plugins:
   - jekyll-seo-tag
-title: imagej
+  - jekyll-sitemap
+url: sufyanshk.github.io/scripts
+author: Sufyan M. Shaikh
+title: scripts
