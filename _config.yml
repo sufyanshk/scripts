@@ -5,4 +5,5 @@ plugins:
   - jekyll-sitemap
 url: sufyanshk.github.io/scripts
 author: Sufyan M. Shaikh
+type: Person
 title: scripts
