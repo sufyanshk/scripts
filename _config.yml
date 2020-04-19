@@ -3,7 +3,6 @@ google_analytics: UA-163057908-1
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
-url: sufyanshk.github.io/scripts
 author: Sufyan M. Shaikh
 type: Person
 title: scripts
