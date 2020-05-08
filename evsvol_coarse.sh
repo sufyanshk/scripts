@@ -5,6 +5,9 @@
 #CHECK THE POSCAR FILE SECTION, CONFIRM THE ELEMENTS AND THEIR RESPECTIVE
 #ATOMS ARE CORRECTLY DEFINED
 
+#Before relaxation POSCAR is preserved
+cat POSCAR > POSCAR_before_relaxation.vasp
+
 rm summary1.csv summary_EvsV_coarse.csv
 
 #Define no. of cores
@@ -71,7 +74,13 @@ sed -i "s/IBRION.*/IBRION = -1" INCAR
 
 echo "STARTING FINAL ENERGY CALCULATION FOR CORRECT ENERGY VALUES"
 mpirun \-n $n_cores vasp_std > log
+#After the third run, the CONTCAR file will be copied to POSCAR.
+cat CONTCAR > POSCAR
+echo "CONTCAR COPIED TO POSCAR"
 echo "FINAL ENERGY CALCULATION IS OVER"
+
+#After the relaxation is over, the POSCAR is preserved
+cat POSCAR > POSCAR_after_relaxation.vasp
 
 echo "STARTING E vs V CALCULATIONS"
 
