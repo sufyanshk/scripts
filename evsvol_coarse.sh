@@ -58,9 +58,13 @@ echo "VASP SECOND RUN STARTED"
 mpirun \-n $n_cores vasp_std > log
 echo "SECOND RUN OF VASP IS OVER"
 
-#For getting correct energy values, one more calculation will be done with TETRAHEDRON method (ISMEAR=-5).
+#After the second run, the CONTCAR file will be again copied to POSCAR.
+cat CONTCAR > POSCAR
+echo "CONTCAR COPIED TO POSCAR"
+
+#For getting correct energy values, one more calculation will be done with TETRAHEDRON method with BLOCH correction (ISMEAR=-5).
 #There won't be any relaxation for this run (IBRION=-1).
-#INCAR file will be written here
+#INCAR file will be edited here
 echo "INCAR FILE WILL BE EDITED"
 sed -i "s/ISMEAR.*/ISMEAR = -5" INCAR
 sed -i "s/IBRION.*/IBRION = -1" INCAR
