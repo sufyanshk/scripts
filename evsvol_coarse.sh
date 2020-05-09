@@ -33,7 +33,6 @@ cat >INCAR <<!
 	NELMIN = 3 
 	ISIF = 3
 	ISMEAR = 1
-	MAGMOM = 5 5 
 	SIGMA = 0.2
 	PREC = Accurate
 	LWAVE = .FALSE.
@@ -69,8 +68,8 @@ echo "CONTCAR COPIED TO POSCAR"
 #There won't be any relaxation for this run (IBRION=-1).
 #INCAR file will be edited here
 echo "INCAR FILE WILL BE EDITED"
-sed -i "s/ISMEAR.*/ISMEAR = -5" INCAR
-sed -i "s/IBRION.*/IBRION = -1" INCAR
+sed -i "s/ISMEAR.*/ISMEAR = -5/" INCAR
+sed -i "s/IBRION.*/IBRION = -1/" INCAR
 
 echo "STARTING FINAL ENERGY CALCULATION FOR CORRECT ENERGY VALUES"
 mpirun \-n $n_cores vasp_std > log
