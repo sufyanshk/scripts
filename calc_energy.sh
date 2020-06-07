@@ -1,13 +1,14 @@
 #Copyright (C) 2020 Sufyan M. Shaikh
 #!/bin/bash
-#@ output     = unslipped_110_222_60deg.vasp_12LVac.out
-#@ error      = unslipped_110_222_60deg.vasp_12LVac.err
+#@ output     = output.out
+#@ error      = error.err
 #@ job_type   =  MPICH
 #@ node = 1
 #@ tasks_per_node = 24
 #@ class      = Medium128
 #@ environment = COPY_ALL
 #@ queue
+
 
 #THIS SCRIPT SHOULD BE USED FOR INITIAL STRUCUTRAL AND SHAPE RELAXATION
 #CHECK THE POSCAR FILE SECTION, CONFIRM THE ELEMENTS AND THEIR RESPECTIVE
@@ -33,7 +34,7 @@ e_cutoff=300
 cat >INCAR <<!
 SYSTEM = $sys_name
 ISTART = 0
-NCORE = 4
+NPAR = 4
 ALGO = FAST
 ISPIN = 2 
 NSIM = 4
@@ -78,35 +79,9 @@ echo "INCAR FILE WILL BE EDITED"
 sed -i "s/ISMEAR.*/ISMEAR\ =\ -5/g" INCAR
 sed -i "s/IBRION.*/IBRION\ =\ -1/g" INCAR
 sed -i "s/PREC.*/PREC\ =\ High/g" INCAR
-sed -i "s/ISIF.*/ISIF\ =\ 2/g" INCAR
+sed -i "s/ISIF.*/ISIF\ =\ 2/" INCAR
 sed -i "/NSW.*/d" INCAR
 
 echo "STARTING FINAL ENERGY CALCULATION FOR CORRECT ENERGY VALUES" && touch "finals_started"
 mpirun -np $n_cores vasp > log
 echo "FINAL ENERGY CALCULATION IS OVER" && touch "finals_over"
-
-echo "STARTING E vs V CALCULATIONS" && touch "EV_started"
-
-#POSCAR will be changed for every new lattice parameter and the values will be used to calculated the energies.
-#These energies will saved in SUMMARY file, which will be later used to plot E vs V graph.
-
-for i in $(seq 1 1 10) 
-do
-	sed -i "2s/.*/$i/" POSCAR
-	echo "a= $i"
-	mpirun -np $n_cores vasp > log
-	
-	#This will write in to file summary.csv file.
-	#The columns will be sepereated with spaces.
-	E=`awk '/F=/ {print $0}' OSZICAR` ; echo $i kp $E >> summary1.csv
-done
-
-#This will seperate the columns by commas and only the 
-#lattice parameter, K-points and Energies will be printed to summary_EvsV_coarse.csv file.
-awk '{print $1","$2","$5}' summary1.csv > summary_EvsV_coarse.csv
-
-#Plots the E vs. V using gnuplot
-gnuplot plot_coarse.plt
-
-echo "$sys_name : E vs. V \"COARSE\" CALCULATIONS ARE FINISHED" && touch "EV_over"
-printf "\n"

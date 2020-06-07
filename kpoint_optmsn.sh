@@ -1,5 +1,13 @@
 #Copyright (C) 2020 Sufyan M. Shaikh
 #!/bin/bash
+#@ output     = unslipped_110_222_60deg.vasp_12LVac.out
+#@ error      = unslipped_110_222_60deg.vasp_12LVac.err
+#@ job_type   =  MPICH
+#@ node = 1
+#@ tasks_per_node = 24
+#@ class      = Medium128
+#@ environment = COPY_ALL
+#@ queue
 
 #THIS FILE SHOULD ONLY BE USED FOR OPTIMISING KPOINTS...
 #AFTER THE E vs V HAS BEEN OPTIMISED AND...
@@ -24,12 +32,12 @@ sed -i "2s/.*/$i/" POSCAR
 #Put the range of K-point in which you want to get the energy values.
 for kp in $(seq 4 1 20)
 do
-	sed -i "4s/.*/$kp $kp $kp/" KPOINTS
+	sed -i "4s/.*/$kp\ $kp\ $kp/" KPOINTS
 
 	echo "a= $i K-points=$kp $kp $kp"
 	
 	#Energy will be calculated for every KPOINT
-	mpirun \-n $n_cores vasp_std > log 
+	mpirun -np $n_cores vasp > log 
 	
 	#Lattice parameter, K-points and energy will be written in the "summary3.csv" file
 	E=`awk '/F=/ {print $0}' OSZICAR` 

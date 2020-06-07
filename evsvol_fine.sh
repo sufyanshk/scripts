@@ -1,5 +1,13 @@
 #Copyright (C) 2020 Sufyan M. Shaikh
 #!/bin/bash
+#@ output     = unslipped_110_222_60deg.vasp_12LVac.out
+#@ error      = unslipped_110_222_60deg.vasp_12LVac.err
+#@ job_type   =  MPICH
+#@ node = 1
+#@ tasks_per_node = 24
+#@ class      = Medium128
+#@ environment = COPY_ALL
+#@ queue
 
 #THIS SCRIPT SHOULD BE USED FOR FINAL LATTICE PARAMETER CALCULATION ONLY
 #CHECK THE POSCAR FILE SECTION, VERIFY THAT THE EACH ELEMENT AND ITS RESPECTIVE
@@ -28,10 +36,9 @@ e_cutoff=295
 #For better accuracy, keep the step size in for loop as 0.01
 for i in $(seq 2 0.01 4) 
 do
-	sed -i "1s/.*/$sys_name/" POSCAR
 	sed -i "2s/.*/$i/" POSCAR
 	echo "a= $i"
-	mpirun \-n $n_cores vasp_std > log 
+	mpirun -np $n_cores vasp > log 
 	
 	#This will write in to file summary2.csv file.
 	E=`awk '/F=/ {print $0}' OSZICAR` ; echo $i kp2 $E >> summary2.csv
