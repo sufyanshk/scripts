@@ -1,7 +1,7 @@
 #Copyright (C) 2020 Sufyan M. Shaikh
 #!/bin/bash
-#@ output     = unslipped_110_222_60deg.vasp_12LVac.out
-#@ error      = unslipped_110_222_60deg.vasp_12LVac.err
+#@ output     = outpu.out
+#@ error      = error.err
 #@ job_type   =  MPICH
 #@ node = 1
 #@ tasks_per_node = 24
