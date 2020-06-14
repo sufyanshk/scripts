@@ -33,7 +33,6 @@ sed -i "2s/.*/$i/" POSCAR
 for kp in $(seq 4 1 20)
 do
 	sed -i "4s/.*/$kp\ $kp\ $kp/" KPOINTS
-
 	echo "a= $i K-points=$kp $kp $kp"
 	
 	#Energy will be calculated for every KPOINT
