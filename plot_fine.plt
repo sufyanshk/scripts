@@ -1,10 +1,12 @@
 #Copyright (C) 2020 Sufyan M. Shaikh
 #For plotting FINE E vs. V graph using gnuplot
+
+#set datafile separator ','
 set encoding utf8
 set terminal postscript eps enhanced color font "Helvetica-Bold,24"
 set output 'summary2.eps'
 set title 'E vs. Lattice parameter FINE'
-show title
+#show title
 set tics scale 1 
 set zeroaxis
 set mxtics

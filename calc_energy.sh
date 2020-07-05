@@ -21,6 +21,9 @@ if [ -f summary1.csv ];then
         fi
 fi
 
+#POSCAR beofre
+cat POSCAR > poscar_before
+
 #Define no. of cores
 n_cores=16
 
@@ -72,16 +75,23 @@ echo "VASP SECOND RUN STARTED" && touch "semifinals_started"
 mpirun -np $n_cores vasp > log
 echo "SECOND RUN OF VASP IS OVER" && touch "semifinals_over"
 
+#After the second run, the CONTCAR file will be copied to POSCAR.
+cat CONTCAR > POSCAR
+echo "CONTCAR COPIED TO POSCAR"
+
 #For getting correct energy values, one more calculation will be done with TETRAHEDRON method (ISMEAR=-5).
 #There won't be any relaxation for this run (IBRION=-1).
 #INCAR file will be written here
 echo "INCAR FILE WILL BE EDITED"
 sed -i "s/ISMEAR.*/ISMEAR\ =\ -5/g" INCAR
 sed -i "s/IBRION.*/IBRION\ =\ -1/g" INCAR
-sed -i "s/PREC.*/PREC\ =\ High/g" INCAR
+#sed -i "s/PREC.*/PREC\ =\ High/g" INCAR
 sed -i "s/ISIF.*/ISIF\ =\ 2/" INCAR
 sed -i "/NSW.*/d" INCAR
 
 echo "STARTING FINAL ENERGY CALCULATION FOR CORRECT ENERGY VALUES" && touch "finals_started"
 mpirun -np $n_cores vasp > log
 echo "FINAL ENERGY CALCULATION IS OVER" && touch "finals_over"
+
+#POSCAR after
+cat POSCAR > poscar_after
