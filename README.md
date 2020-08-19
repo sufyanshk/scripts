@@ -24,4 +24,5 @@ Steps:
 
 # Disclaimer
 This program is not affiliated with VASP.  
-You are free to modify it, but do so at your own risk.
+You are free to modify it, but do so at your own risk.  
+ 
