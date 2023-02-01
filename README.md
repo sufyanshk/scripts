@@ -1,5 +1,5 @@
 # VASP structure relaxation
-VASP and Gnuplot should be installed prior to running these scripts.
+VASP and Gnuplot should be installed prior to running these scripts.  
 Other interesting repositories can be found on my personal website: <a href="https://sufyanshk.github.io/">sufyanshk.github.io</a>  
 MPIRUN is used for parrallel runs of `vasp_std`.
 
